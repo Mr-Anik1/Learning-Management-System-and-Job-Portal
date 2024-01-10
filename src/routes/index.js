@@ -9,6 +9,7 @@ const { newsLetterRoute } = require("./newsLetterRoute");
 const { reviewRoute } = require("./reviewRoute");
 const { contactRoute } = require("./contactRoute");
 const { videoRoute } = require("./videoRoute");
+const { documentationRoute } = require("./documentationRoute");
 
 const appRouter = () => {
   // Health Check
@@ -32,7 +33,7 @@ const appRouter = () => {
   // Subscribe and Unsubscribe News Letter
   newsLetterRoute(router);
 
-  // Post a Review
+  // Review
   reviewRoute(router);
 
   // Contact Us
@@ -40,6 +41,9 @@ const appRouter = () => {
 
   // Video
   videoRoute(router);
+
+  // Documentations
+  documentationRoute(router);
 
   return router;
 };

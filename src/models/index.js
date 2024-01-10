@@ -6,6 +6,7 @@ const { NewsLetter } = require("./NewsLetterModel");
 const { Review } = require("./ReviewModel");
 const { Contact } = require("./ContactModel");
 const { Video } = require("./VideoModel");
+const { Documentation } = require("./DocumentationModel");
 
 // All models have been exported
 module.exports = {
@@ -16,4 +17,5 @@ module.exports = {
   Review,
   Contact,
   Video,
+  Documentation,
 };
