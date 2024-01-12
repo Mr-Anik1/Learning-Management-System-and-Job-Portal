@@ -13,6 +13,10 @@ const documentationSchema = new Schema(
       unique: true,
       index: true,
     },
+    category: {
+      type: String,
+      required: true,
+    },
     type: {
       type: String,
       required: true,

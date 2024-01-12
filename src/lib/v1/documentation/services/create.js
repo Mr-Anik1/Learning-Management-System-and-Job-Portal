@@ -4,6 +4,7 @@ const { errors } = require("../../../../errors");
 const create = async ({
   title,
   slug,
+  category,
   type,
   author,
   content,
@@ -11,7 +12,15 @@ const create = async ({
   keywords,
 }) => {
   // If required filds doesn't exists
-  if (!title || !slug || !type || !author || !content || !keywords) {
+  if (
+    !title ||
+    !slug ||
+    !category ||
+    !type ||
+    !author ||
+    !content ||
+    !keywords
+  ) {
     throw new errors.BadRequestError(`Invalid Credentials`);
   }
 
@@ -19,6 +28,7 @@ const create = async ({
   const createQuery = {
     title,
     slug,
+    category,
     type,
     author,
     content,

@@ -8,7 +8,7 @@ const create = asyncHandler(async (req, res) => {
   let slug = undefined;
 
   // Filds from request body
-  const { title, type, author, content, keywords } = req.body;
+  const { title, category, type, author, content, keywords } = req.body;
 
   // Documentation Image
   const docImageFilePath = req.file?.path;
@@ -24,6 +24,7 @@ const create = asyncHandler(async (req, res) => {
   const documentation = await documentationServicesV1.create({
     title,
     slug,
+    category,
     type,
     author,
     content,

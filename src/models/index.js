@@ -7,6 +7,9 @@ const { Review } = require("./ReviewModel");
 const { Contact } = require("./ContactModel");
 const { Video } = require("./VideoModel");
 const { Documentation } = require("./DocumentationModel");
+const { DocumentationCategory } = require("./DocumentationCategoryModel");
+const { Blog } = require("./BlogModel");
+const { BlogCategory } = require("./BlogCategoryModel");
 
 // All models have been exported
 module.exports = {
@@ -18,4 +21,7 @@ module.exports = {
   Contact,
   Video,
   Documentation,
+  DocumentationCategory,
+  Blog,
+  BlogCategory,
 };

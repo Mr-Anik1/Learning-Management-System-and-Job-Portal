@@ -14,7 +14,7 @@ const update = asyncHandler(async (req, res) => {
   let slug = undefined;
 
   // Filds from request body
-  const { title, type, author, content, keywords } = req.body;
+  const { title, category, type, author, content, keywords } = req.body;
 
   // If title is exist, generate slug
   if (title) {
@@ -27,6 +27,7 @@ const update = asyncHandler(async (req, res) => {
   const payload = {
     title,
     slug,
+    category,
     type,
     author,
     content,

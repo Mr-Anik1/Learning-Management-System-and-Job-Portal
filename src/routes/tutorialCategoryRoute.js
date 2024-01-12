@@ -2,7 +2,8 @@ const { tutorialCategoryControllers } = require("../api/tutorialCategory");
 const { authMiddleware } = require("../middlewares");
 
 const tutorialCategoryRoute = (router) => {
-  // Create and Find All Tutorial Category -> Only Admin
+  // 1. Only admin can create tutorial category.
+  // 2. Anyone can find all tutorial category.
   router
     .route("/api/v1/tutorial/category")
     .post(
@@ -10,13 +11,9 @@ const tutorialCategoryRoute = (router) => {
       authMiddleware.authorize({ roles: ["admin"] }),
       tutorialCategoryControllers.create
     )
-    .get(
-      authMiddleware.authenticate,
-      authMiddleware.authorize({ roles: ["admin"] }),
-      tutorialCategoryControllers.findAll
-    );
+    .get(tutorialCategoryControllers.findAll);
 
-  // Find Single,Update and Delete Tutorial Category
+  // Only admin can find Single,Update and Delete tutorial category
   router
     .route("/api/v1/tutorial/category/:id")
     .get(
