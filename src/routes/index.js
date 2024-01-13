@@ -11,6 +11,7 @@ const { contactRoute } = require("./contactRoute");
 const { videoRoute } = require("./videoRoute");
 const { documentationRoute } = require("./documentationRoute");
 const { documentationCategoryRoute } = require("./documentationCategoryRoute");
+const { blogCategoryRoute } = require("./blogCategoryRoute");
 
 const appRouter = () => {
   // Health Check
@@ -48,6 +49,9 @@ const appRouter = () => {
 
   // Documentation Category
   documentationCategoryRoute(router);
+
+  // Blog
+  blogCategoryRoute(router);
 
   return router;
 };
