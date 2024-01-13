@@ -13,9 +13,9 @@ const documentationRoute = (router) => {
     )
     .get(documentationControllers.findAll);
 
-  // Anyone can find a single documentation with slug
+  // Anyone can find a single documentation with categoryType and slug
   router.get(
-    "/api/v1/documentations/:slug",
+    "/api/v1/documentations/:categoryType/:slug",
     documentationControllers.findSingle
   );
 

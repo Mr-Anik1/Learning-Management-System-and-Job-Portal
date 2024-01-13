@@ -5,6 +5,7 @@ const create = async ({
   title,
   slug,
   category,
+  categorySlug,
   type,
   author,
   content,
@@ -16,6 +17,7 @@ const create = async ({
     !title ||
     !slug ||
     !category ||
+    !categorySlug ||
     !type ||
     !author ||
     !content ||
@@ -29,6 +31,7 @@ const create = async ({
     title,
     slug,
     category,
+    categorySlug,
     type,
     author,
     content,
