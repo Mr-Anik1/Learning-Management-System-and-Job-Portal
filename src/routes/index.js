@@ -11,6 +11,7 @@ const { contactRoute } = require("./contactRoute");
 const { videoRoute } = require("./videoRoute");
 const { documentationRoute } = require("./documentationRoute");
 const { documentationCategoryRoute } = require("./documentationCategoryRoute");
+const { blogRoute } = require("./blogRoute");
 const { blogCategoryRoute } = require("./blogCategoryRoute");
 
 const appRouter = () => {
@@ -51,6 +52,9 @@ const appRouter = () => {
   documentationCategoryRoute(router);
 
   // Blog
+  blogRoute(router);
+
+  // Blog Category
   blogCategoryRoute(router);
 
   return router;
