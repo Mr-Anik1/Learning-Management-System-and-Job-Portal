@@ -3,6 +3,7 @@ const { StatusCodes } = require("http-status-codes");
 const {
   documentationCategoryServicesV1,
 } = require("../../../lib/v1/documentationCategory");
+const { default: slugify } = require("slugify");
 
 const update = asyncHandler(async (req, res) => {
   // ID from request params.
