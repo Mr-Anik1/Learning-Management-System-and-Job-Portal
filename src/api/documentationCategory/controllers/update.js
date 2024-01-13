@@ -5,13 +5,25 @@ const {
 } = require("../../../lib/v1/documentationCategory");
 
 const update = asyncHandler(async (req, res) => {
+  // ID from request params.
   const id = req.params?.id;
+
+  // First define slug is undefined
+  let slug = undefined;
+
+  // Filds from request body
   const { title } = req.body;
+
+  // If title is exist, generate slug
+  if (title) {
+    slug = slugify(title.toLowerCase());
+  }
 
   // Update Documentation Category
   const documentationCategory = await documentationCategoryServicesV1.update({
     id,
     title,
+    slug,
   });
 
   // Generate Response

@@ -1,7 +1,7 @@
 const { DocumentationCategory } = require("../../../../models");
 const { errors } = require("../../../../errors");
 
-const update = async ({ id, title }) => {
+const update = async ({ id, title, slug }) => {
   // If id doesn't pass then throw BadRequestError
   if (!id) {
     throw new errors.BadRequestError(`Invalid Credentials`);
@@ -12,6 +12,10 @@ const update = async ({ id, title }) => {
 
   if (title) {
     updateQuery.title = title;
+  }
+
+  if (slug) {
+    updateQuery.slug = slug;
   }
 
   try {

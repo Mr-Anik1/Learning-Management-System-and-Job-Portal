@@ -6,6 +6,10 @@ const documentationCategorySchema = new Schema(
       type: String,
       required: true,
     },
+    slug: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true, id: true }
 );

@@ -17,6 +17,10 @@ const documentationSchema = new Schema(
       type: String,
       required: true,
     },
+    categorySlug: {
+      type: String,
+      required: true,
+    },
     type: {
       type: String,
       required: true,
