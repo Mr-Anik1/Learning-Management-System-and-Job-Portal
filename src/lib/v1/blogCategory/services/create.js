@@ -1,9 +1,9 @@
 const { BlogCategory } = require("../../../../models");
 const { errors } = require("../../../../errors");
 
-const create = async ({ title }) => {
-  // If title doesn't exist
-  if (!title) {
+const create = async ({ title, slug }) => {
+  // If title or slug doesn't exist
+  if (!title || !slug) {
     throw new errors.BadRequestError(`Invalid Credentials`);
   }
 
@@ -11,6 +11,7 @@ const create = async ({ title }) => {
     // Create new blogCategory
     const blogCategory = new BlogCategory({
       title,
+      slug,
     });
     await blogCategory.save();
 

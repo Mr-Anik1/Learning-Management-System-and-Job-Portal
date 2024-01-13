@@ -17,6 +17,10 @@ const blogSchema = new Schema(
       type: String,
       required: true,
     },
+    categorySlug: {
+      type: String,
+      required: true,
+    },
     thumbnail: {
       type: String,
       default:
