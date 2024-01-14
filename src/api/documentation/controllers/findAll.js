@@ -11,6 +11,7 @@ const findAll = asyncHandler(async (req, res) => {
   const sortType = req.query?.sort_type || defaults.sortType;
   const sortBy = req.query?.sort_by || defaults.sortBy;
   const search = req.query?.search || defaults.search;
+  const category = req.query?.category || defaults.category;
 
   // Retrive all documentations
   const documentations = await documentationServicesV1.findAll({
@@ -19,11 +20,13 @@ const findAll = asyncHandler(async (req, res) => {
     sortType,
     sortBy,
     search,
+    category,
   });
 
   // Pagination
   const totalDocumentations = await documentationServicesV1.count({
     search,
+    category,
   });
   const pagination = essentialQuery.getPagination({
     page,
