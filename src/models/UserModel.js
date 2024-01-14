@@ -33,10 +33,10 @@ const userSchema = new Schema(
     mobile: {
       type: String,
       required: [true, "Please provide a mobile number"],
-      minlength: [10, "Mobile number must be at least 10 characters long"],
-      maxlength: [25, "Mobile number can be up to 25 characters long"],
-      unique: true,
-      index: true,
+      match: [
+        /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
+        "Please enter a valid mobile number",
+      ],
     },
     password: {
       type: String,
@@ -50,7 +50,7 @@ const userSchema = new Schema(
     role: {
       type: String,
       enum: {
-        values: ["admin", "user"],
+        values: ["admin", "instructor", "user"],
         message: "{VALUE} is not supported",
       },
       default: "user",
