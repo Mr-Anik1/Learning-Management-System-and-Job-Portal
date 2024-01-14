@@ -14,7 +14,7 @@ const videoRoute = (router) => {
     .get(videoControllers.findAll);
 
   // Anyone can find a single video with slug
-  router.get("/api/v1/videos/:slug", videoControllers.findSingle);
+  router.get("/api/v1/videos/:categoryType/:slug", videoControllers.findSingle);
 
   // Only admin can update and delete a video
   router
