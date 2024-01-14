@@ -3,11 +3,12 @@ const { blogServicesV1 } = require("../../../lib/v1/blog");
 const { StatusCodes } = require("http-status-codes");
 
 const findSingle = asyncHandler(async (req, res) => {
-  const { slug } = req.params;
+  const { slug, categoryType } = req.params;
 
   // Retrive Single Blog
-  const blog = await blogServicesV1.findSingle({
+  const { blog, blogTopic } = await blogServicesV1.findSingle({
     slug,
+    categoryType,
   });
 
   // Generate Response
@@ -15,6 +16,7 @@ const findSingle = asyncHandler(async (req, res) => {
     code: StatusCodes.OK,
     message: "Blog Retrived Successfully",
     data: blog,
+    simillarTopic: blogTopic,
     links: {
       self: req.url,
     },

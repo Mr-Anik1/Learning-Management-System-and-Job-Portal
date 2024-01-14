@@ -14,7 +14,7 @@ const blogRoute = (router) => {
     .get(blogControllers.findAll);
 
   // Anyone can find a single blog with slug
-  router.get("/api/v1/blogs/:slug", blogControllers.findSingle);
+  router.get("/api/v1/blogs/:categoryType/:slug", blogControllers.findSingle);
 
   // Only admin can update and delete a blog
   router

@@ -4,7 +4,9 @@ const { StatusCodes } = require("http-status-codes");
 const { blogServicesV1 } = require("../../../lib/v1/blog");
 
 const create = asyncHandler(async (req, res) => {
+  // First define slug and categorySlug is undefined
   let slug = undefined;
+  let categorySlug = undefined;
 
   // Filds from request body
   const { title, category, description, keywords } = req.body;
@@ -17,6 +19,11 @@ const create = asyncHandler(async (req, res) => {
     slug = slugify(title.toLowerCase());
   }
 
+  // If category is exist, generate categorySlug
+  if (category) {
+    categorySlug = slugify(category.toLowerCase());
+  }
+
   /**
    * @Post_a_blog
    */
@@ -24,6 +31,7 @@ const create = asyncHandler(async (req, res) => {
     title,
     slug,
     category,
+    categorySlug,
     thumbnailFilePath,
     description,
     keywords,

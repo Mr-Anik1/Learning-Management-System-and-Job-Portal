@@ -6,7 +6,7 @@ const config = {
   sortBy: "updatedAt",
   search: "",
   status: "",
-  email: "",
+  category: "",
   totalItems: 0,
   // JWT
   secret: process.env.ACCESS_TOKEN_SECRET,

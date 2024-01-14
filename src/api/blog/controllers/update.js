@@ -10,8 +10,9 @@ const update = asyncHandler(async (req, res) => {
   // Blog thumbnail image
   const thumbnailFilePath = req.file?.path;
 
-  // First define slug is undefined
+  // First define slug and categorySlug is undefined
   let slug = undefined;
+  let categorySlug = undefined;
 
   // Filds from request body
   const { title, category, description, keywords } = req.body;
@@ -21,6 +22,11 @@ const update = asyncHandler(async (req, res) => {
     slug = slugify(title.toLowerCase());
   }
 
+  // If category is exist, generate categorySlug
+  if (category) {
+    categorySlug = slugify(category.toLowerCase());
+  }
+
   /**
    * @Generate_paylod
    */
@@ -28,6 +34,7 @@ const update = asyncHandler(async (req, res) => {
     title,
     slug,
     category,
+    categorySlug,
     description,
     keywords,
   };

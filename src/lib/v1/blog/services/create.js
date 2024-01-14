@@ -5,12 +5,20 @@ const create = async ({
   title,
   slug,
   category,
+  categorySlug,
   thumbnailFilePath,
   description,
   keywords,
 }) => {
   // If required filds doesn't exists
-  if (!title || !slug || !category || !description || !keywords) {
+  if (
+    !title ||
+    !slug ||
+    !category ||
+    !categorySlug ||
+    !description ||
+    !keywords
+  ) {
     throw new errors.BadRequestError(`Invalid Credentials`);
   }
 
@@ -19,6 +27,7 @@ const create = async ({
     title,
     slug,
     category,
+    categorySlug,
     description,
     keywords,
   };

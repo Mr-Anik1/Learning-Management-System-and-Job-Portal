@@ -1,9 +1,9 @@
 const { Blog } = require("../../../../models");
 const { errors } = require("../../../../errors");
 
-const findSingle = async ({ slug }) => {
-  // If slug doesn't pass
-  if (!slug) {
+const findSingle = async ({ slug, categoryType }) => {
+  // If slug and categoryType doesn't pass
+  if (!slug || !categoryType) {
     throw new errors.BadRequestError(`Invalid Credentials.`);
   }
 
@@ -11,14 +11,20 @@ const findSingle = async ({ slug }) => {
     // Find a single blog
     const blog = await Blog.findOne({
       slug,
+      categorySlug: categoryType,
     }).select("-thumbnailId");
+
+    // Find simillar blog topic with categorySlug
+    const blogTopic = await Blog.find({ categorySlug: categoryType }).select(
+      "title slug categorySlug"
+    );
 
     // If blog doesn't exist
     if (!blog) {
       throw Error;
     }
 
-    return blog;
+    return { blog, blogTopic };
   } catch (err) {
     if (err.message) {
       console.log(`[FIND_SINGLE_BLOG]: ${err.message}`);
