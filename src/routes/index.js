@@ -9,6 +9,7 @@ const { newsLetterRoute } = require("./newsLetterRoute");
 const { reviewRoute } = require("./reviewRoute");
 const { contactRoute } = require("./contactRoute");
 const { videoRoute } = require("./videoRoute");
+const { videoCategoryRoute } = require("./videoCategoryRoute");
 const { documentationRoute } = require("./documentationRoute");
 const { documentationCategoryRoute } = require("./documentationCategoryRoute");
 const { blogRoute } = require("./blogRoute");
@@ -44,6 +45,9 @@ const appRouter = () => {
 
   // Video
   videoRoute(router);
+
+  // Video Category
+  videoCategoryRoute(router);
 
   // Documentations
   documentationRoute(router);

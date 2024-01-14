@@ -6,6 +6,7 @@ const { NewsLetter } = require("./NewsLetterModel");
 const { Review } = require("./ReviewModel");
 const { Contact } = require("./ContactModel");
 const { Video } = require("./VideoModel");
+const { VideoCategory } = require("./VideoCategoryModel");
 const { Documentation } = require("./DocumentationModel");
 const { DocumentationCategory } = require("./DocumentationCategoryModel");
 const { Blog } = require("./BlogModel");
@@ -20,6 +21,7 @@ module.exports = {
   Review,
   Contact,
   Video,
+  VideoCategory,
   Documentation,
   DocumentationCategory,
   Blog,
