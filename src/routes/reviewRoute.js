@@ -2,21 +2,21 @@ const { reviewControllers } = require("../api/review");
 const { authMiddleware } = require("../middlewares");
 
 const reviewRoute = (router) => {
-  // 1. Authenticate user can create a new review
-  // 2. Anyone who access the internet can find all reviews.
+  // 1. Only authenticated and authorized users can create a new review.
+  // 2. Anyone who accesses the internet can find all the reviews.
   router
     .route("/api/v1/reviews")
     .post(
       authMiddleware.authenticate,
       authMiddleware.authorize({
-        roles: ["admin", "user"],
+        roles: ["admin", "instructor", "user"],
       }),
       reviewControllers.create
     )
     .get(reviewControllers.findAll);
 
-  // 1. Only Admin can find a single review
-  // 2~3. Authenticate user who is the actual owner of a review can update and delete the review.
+  // 1. Only admins can find a single review.
+  // 2~3. Authenticated, authorized users (and the actual owner of a review) can update and delete a review.
   router
     .route("/api/v1/reviews/:id")
     .get(
@@ -28,7 +28,7 @@ const reviewRoute = (router) => {
     )
     .patch(
       authMiddleware.authenticate,
-      authMiddleware.authorize({ roles: ["admin", "user"] }),
+      authMiddleware.authorize({ roles: ["admin", "instructor", "user"] }),
       authMiddleware.reviewOwnership({
         model: "Review",
       }),
@@ -36,14 +36,14 @@ const reviewRoute = (router) => {
     )
     .delete(
       authMiddleware.authenticate,
-      authMiddleware.authorize({ roles: ["admin", "user"] }),
+      authMiddleware.authorize({ roles: ["admin", "instructor", "user"] }),
       authMiddleware.reviewOwnership({
         model: "Review",
       }),
       reviewControllers.remove
     );
 
-  // Find All reviews for only admin.
+  // Find all reviews for only admins.
   router.get(
     "/api/v1/admin/reviews",
     authMiddleware.authenticate,
