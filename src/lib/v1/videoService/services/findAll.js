@@ -8,6 +8,7 @@ const findAll = async ({
   sortType = defaults.sortType,
   sortBy = defaults.sortBy,
   search = defaults.search,
+  category = defaults.category,
 }) => {
   try {
     // Create essential string for sorting
@@ -16,6 +17,7 @@ const findAll = async ({
     // Generate filtering
     const filter = {
       title: { $regex: search, $options: "i" },
+      category: { $regex: category, $options: "i" },
     };
 
     // Find all Videos

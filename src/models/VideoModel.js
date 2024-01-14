@@ -13,6 +13,14 @@ const videoSchema = new Schema(
       unique: true,
       index: true,
     },
+    category: {
+      type: String,
+      required: true,
+    },
+    categorySlug: {
+      type: String,
+      required: true,
+    },
     thumbnail: {
       type: String,
       default:

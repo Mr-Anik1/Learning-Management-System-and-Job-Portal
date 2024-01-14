@@ -10,15 +10,21 @@ const update = asyncHandler(async (req, res) => {
   // Video thumbnail image
   const thumbnailFilePath = req.file?.path;
 
-  // First define slug is undefined
+  // First define slug and categorySlug is undefined
   let slug = undefined;
+  let categorySlug = undefined;
 
   // Filds from request body
-  const { title, description, videoUrl, keywords } = req.body;
+  const { title, category, description, videoUrl, keywords } = req.body;
 
   // If title is exist, generate slug
   if (title) {
     slug = slugify(title.toLowerCase());
+  }
+
+  // If category is exist, generate categorySlug
+  if (category) {
+    categorySlug = slugify(category.toLowerCase());
   }
 
   /**
@@ -27,6 +33,8 @@ const update = asyncHandler(async (req, res) => {
   const payload = {
     title,
     slug,
+    category,
+    categorySlug,
     description,
     videoUrl,
     keywords,

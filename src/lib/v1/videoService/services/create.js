@@ -4,13 +4,23 @@ const { errors } = require("../../../../errors");
 const create = async ({
   title,
   slug,
+  category,
+  categorySlug,
   thumbnailFilePath,
   description,
   videoUrl,
   keywords,
 }) => {
   // If required filds doesn't exists
-  if (!title || !slug || !description || !videoUrl || !keywords) {
+  if (
+    !title ||
+    !slug ||
+    !category ||
+    !categorySlug ||
+    !description ||
+    !videoUrl ||
+    !keywords
+  ) {
     throw new errors.BadRequestError(`Invalid Credentials`);
   }
 
@@ -18,6 +28,8 @@ const create = async ({
   const createQuery = {
     title,
     slug,
+    category,
+    categorySlug,
     description,
     videoUrl,
     keywords,
