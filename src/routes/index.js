@@ -14,6 +14,7 @@ const { documentationRoute } = require("./documentationRoute");
 const { documentationCategoryRoute } = require("./documentationCategoryRoute");
 const { blogRoute } = require("./blogRoute");
 const { blogCategoryRoute } = require("./blogCategoryRoute");
+const { courseCategoryRoute } = require("./courseCategoryRoute");
 
 const appRouter = () => {
   // Health Check
@@ -60,6 +61,9 @@ const appRouter = () => {
 
   // Blog Category
   blogCategoryRoute(router);
+
+  // Course Category
+  courseCategoryRoute(router);
 
   return router;
 };

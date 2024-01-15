@@ -11,6 +11,7 @@ const { Documentation } = require("./DocumentationModel");
 const { DocumentationCategory } = require("./DocumentationCategoryModel");
 const { Blog } = require("./BlogModel");
 const { BlogCategory } = require("./BlogCategoryModel");
+const { CourseCategory } = require("./CourseCategoryModel");
 
 // All models have been exported
 module.exports = {
@@ -26,4 +27,5 @@ module.exports = {
   DocumentationCategory,
   Blog,
   BlogCategory,
+  CourseCategory,
 };
