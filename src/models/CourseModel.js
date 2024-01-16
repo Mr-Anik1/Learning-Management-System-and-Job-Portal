@@ -72,7 +72,7 @@ const courseSchema = new Schema(
     lessons: [
       {
         type: Schema.Types.ObjectId,
-        ref: "User",
+        ref: "Lesson",
         required: true,
       },
     ],
