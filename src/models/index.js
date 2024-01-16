@@ -13,6 +13,7 @@ const { Blog } = require("./BlogModel");
 const { BlogCategory } = require("./BlogCategoryModel");
 const { Course } = require("./CourseModel");
 const { CourseCategory } = require("./CourseCategoryModel");
+const { Lesson } = require("./LessonModel");
 
 // All models have been exported
 module.exports = {
@@ -30,4 +31,5 @@ module.exports = {
   BlogCategory,
   Course,
   CourseCategory,
+  Lesson,
 };
