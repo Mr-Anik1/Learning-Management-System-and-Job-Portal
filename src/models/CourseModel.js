@@ -73,16 +73,15 @@ const courseSchema = new Schema(
       {
         type: Schema.Types.ObjectId,
         ref: "Lesson",
-        required: true,
       },
     ],
     totalHours: {
-      type: String,
-      required: true,
+      type: Number,
+      default: 0,
     },
     enrolls: {
-      type: String,
-      required: true,
+      type: Number,
+      default: 0,
     },
     ratings: [
       {
@@ -96,7 +95,7 @@ const courseSchema = new Schema(
     ],
     totalRatings: {
       type: Number,
-      required: true,
+      default: 0,
     },
   },
   { timestamps: true, id: true }

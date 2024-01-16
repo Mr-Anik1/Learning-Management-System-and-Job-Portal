@@ -14,6 +14,7 @@ const { documentationRoute } = require("./documentationRoute");
 const { documentationCategoryRoute } = require("./documentationCategoryRoute");
 const { blogRoute } = require("./blogRoute");
 const { blogCategoryRoute } = require("./blogCategoryRoute");
+const { courseRoute } = require("./courseRoute");
 const { courseCategoryRoute } = require("./courseCategoryRoute");
 
 const appRouter = () => {
@@ -61,6 +62,9 @@ const appRouter = () => {
 
   // Blog Category
   blogCategoryRoute(router);
+
+  // Course
+  courseRoute(router);
 
   // Course Category
   courseCategoryRoute(router);
