@@ -35,6 +35,10 @@ const courseRoute = (router) => {
       courseControllers.remove
     );
 
+  /**
+   * @Special_get_Route
+   * For admins and instructor
+   */
   // Find all courses for only admins.
   router.get(
     "/api/v1/admin/courses",
@@ -43,6 +47,15 @@ const courseRoute = (router) => {
       roles: ["admin"],
     }),
     courseControllers.findAllForAdmin
+  );
+
+  // Find single course for admins and instructors(who are the actual owner of a course)
+  router.get(
+    "/api/v1/admin-instructor/courses/:id",
+    authMiddleware.authenticate,
+    authMiddleware.authorize({ roles: ["admin", "instructor"] }),
+    authMiddleware.courseOwnership({ model: "Course" }),
+    courseControllers.findSingleForAdminAndInstructor
   );
 
   return router;

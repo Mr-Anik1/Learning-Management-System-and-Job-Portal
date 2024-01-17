@@ -8,10 +8,16 @@ const findSingle = async ({ slug, categoryType }) => {
   }
 
   try {
-    // Find a single course
+    /**
+     * @NOTE
+     * Only approved couses will show here
+     *
+     */
+    // Find a single APPROVED course
     const course = await Course.findOne({
       slug,
       categorySlug: categoryType,
+      status: "APPROVED",
     })
       .select("-imageId")
       .populate({
@@ -19,15 +25,16 @@ const findSingle = async ({ slug, categoryType }) => {
         select: "_id firstname lastname profilePicture email profession role",
       });
 
-    // Find simillar course topic with categorySlug
-    const courseTopic = await Course.find({
-      categorySlug: categoryType,
-    }).select("title slug categorySlug image price");
-
     // If course doesn't exist
     if (!course) {
       throw Error;
     }
+
+    // If course is exist, find simillar APPROVED courses with categorySlug
+    const courseTopic = await Course.find({
+      categorySlug: categoryType,
+      status: "APPROVED",
+    }).select("title slug categorySlug image price");
 
     return { course, courseTopic };
   } catch (err) {

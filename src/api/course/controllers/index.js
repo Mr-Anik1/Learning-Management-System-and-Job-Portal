@@ -5,6 +5,9 @@ const { findSingle } = require("./findSingle");
 const { update } = require("./update");
 const { remove } = require("./remove");
 const { findAllForAdmin } = require("./findAllForAdmin");
+const {
+  findSingleForAdminAndInstructor,
+} = require("./findSingleForAdminAndInstructor");
 
 // All course controllers have been exported
 module.exports = {
@@ -14,4 +17,5 @@ module.exports = {
   update,
   remove,
   findAllForAdmin,
+  findSingleForAdminAndInstructor,
 };

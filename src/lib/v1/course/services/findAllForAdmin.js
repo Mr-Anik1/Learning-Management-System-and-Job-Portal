@@ -44,7 +44,7 @@ const findAllForAdmin = async ({
     return courses;
   } catch (err) {
     if (err.message) {
-      console.log(`[FIND-ALL-FOR-ADMIN_COURSES]: ${err.message}`);
+      console.log(`[FIND_ALL_COURSES_FOR_ADMIN]: ${err.message}`);
     }
 
     // If error is instance of NotFoundError

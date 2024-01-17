@@ -56,7 +56,7 @@ const courseSchema = new Schema(
     paid: {
       type: String,
       enum: {
-        values: ["PAID", "NOT_PAID", "HALF_PAID"],
+        values: ["FULL_PAID", "NOT_PAID", "HALF_PAID"],
         message:
           "Invalid payment status: {VALUE}. Allowed values are: PAID, NOT_PAID, HALF_PAID",
       },
