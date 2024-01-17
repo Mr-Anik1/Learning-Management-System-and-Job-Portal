@@ -8,6 +8,28 @@ const remove = async ({ id }) => {
   }
 
   try {
+    /**
+     *||------------------------------------||
+     *
+     *                 LATER
+     *     NEED SOME WORK FOR CLOUDINARY
+     *
+     *
+     * const isExistCourse=await Course.findById(id)
+     * 
+     * // If isExistCourse doesn't exist
+       if (!isExistCourse) {
+        throw new errors.NotFoundError(`Requested Resource Doesn't exist`);
+       }
+     *
+     * If(isExistCourse.imageId){
+     *   await cloudinary.uploader.destroy(isExistCourse.imageId);
+     * }
+     *
+     *
+     * |------------------------------------||
+     */
+
     // Delete course
     const course = await Course.findByIdAndDelete(id);
 
