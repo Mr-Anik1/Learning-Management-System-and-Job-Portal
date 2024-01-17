@@ -23,7 +23,10 @@ const update = async ({ id, superUser, comment, color, status }) => {
    * @Only_admin_can_update_sensitive_data
    */
   if (superUser === "admin") {
-    updateQuery.status = status;
+    // Update review status
+    if (status) {
+      updateQuery.status = status;
+    }
   }
 
   try {
