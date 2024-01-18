@@ -34,10 +34,11 @@ const lessonSchema = new Schema(
     freePreview: {
       type: String,
       enum: {
-        values: ["ALLOWED", "NOT_ALLOWED"],
-        message: "{VALUE} is not supported.",
+        values: ["AVAILABLE", "NOT_AVAILABLE"],
+        message:
+          "{VALUE} is not supported. Allowed values are: AVAILABLE, NOT_AVAILABLE",
       },
-      default: "NOT_ALLOWED",
+      default: "NOT_AVAILABLE",
       uppercase: true,
       trim: true,
     },
