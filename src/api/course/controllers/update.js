@@ -25,7 +25,7 @@ const update = asyncHandler(async (req, res) => {
     price,
     status,
     paid,
-    lesson, // push individual lesson
+    lessonId, // push individual lessonId in the lessons array.
     lessons, // full lessons update
     totalHours,
     enrolls,
@@ -70,7 +70,7 @@ const update = asyncHandler(async (req, res) => {
     superUser,
     status,
     imageFilePath,
-    lesson,
+    lessonId,
     payload,
   });
 

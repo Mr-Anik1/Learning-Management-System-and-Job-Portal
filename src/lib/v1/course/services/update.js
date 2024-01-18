@@ -7,7 +7,7 @@ const update = async ({
   superUser,
   status,
   imageFilePath,
-  lesson,
+  lessonId,
   payload = {},
 }) => {
   // If id doesn't pass then throw BadRequestError
@@ -60,15 +60,18 @@ const update = async ({
 
   /**
    * @Update_lessons
-   * Push individual lesson in the lessons array.
+   * Push individual lesson(ID) in the lessons array.
    */
-  if (lesson) {
-    // First check lesson(id) is valid or not
-    const isLessonValid = isValidObjectId({ id: lesson, nameOfId: "Lesson" });
+  if (lessonId) {
+    // First check lessonId is valid or not
+    const isLessonValid = isValidObjectId({
+      id: lessonId,
+      nameOfId: "LessonID",
+    });
 
-    // If lesson is valid, push lesson ID to the lessons array
+    // If lessonId is valid, push lessonId to the lessons array
     if (isLessonValid) {
-      updateQuery.$push = { lessons: lesson };
+      updateQuery.$push = { lessons: lessonId };
     }
   }
 
