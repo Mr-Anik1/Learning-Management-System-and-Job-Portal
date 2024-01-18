@@ -1,10 +1,10 @@
-const { isValid } = require("mongoose");
+const mongoose = require("mongoose");
 const { errors } = require("../errors");
 
 const isValidObjectId = ({ id, nameOfId }) => {
   try {
     // Initial isValid check for common cases
-    if (!isValid(id)) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
       throw Error;
     }
 
