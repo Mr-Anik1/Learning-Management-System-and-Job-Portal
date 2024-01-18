@@ -1,17 +1,21 @@
 const { Course } = require("../../../../models");
 const { errors } = require("../../../../errors");
+const { isValidObjectId } = require("../../../../utils");
 
 const update = async ({
   id,
   superUser,
   status,
   imageFilePath,
+  lesson,
   payload = {},
 }) => {
   // If id doesn't pass then throw BadRequestError
   if (!id) {
     throw new errors.BadRequestError(`Invalid Credentials`);
   }
+
+  // check lesson(id) valid or not
 
   // Generate Update Query for course update
   const updateQuery = {};
@@ -52,6 +56,20 @@ const update = async ({
 
      * 
      */
+  }
+
+  /**
+   * @Update_lessons
+   * Push individual lesson in the lessons array.
+   */
+  if (lesson) {
+    // First check lesson(id) is valid or not
+    const isLessonValid = isValidObjectId({ id: lesson, nameOfId: "Lesson" });
+
+    // If lesson is valid, push lesson ID to the lessons array
+    if (isLessonValid) {
+      updateQuery.$push = { lessons: lesson };
+    }
   }
 
   /**
