@@ -11,6 +11,7 @@ const {
   findSingleForAdminAndInstructor,
 } = require("./findSingleForAdminAndInstructor");
 const { checkCourseOwnership } = require("./checkCourseOwnership");
+const { singleCourseById } = require("./singleCourseById");
 
 // All course services have been exported
 module.exports = {
@@ -24,4 +25,5 @@ module.exports = {
   countForAdmin,
   findSingleForAdminAndInstructor,
   checkCourseOwnership,
+  singleCourseById,
 };
