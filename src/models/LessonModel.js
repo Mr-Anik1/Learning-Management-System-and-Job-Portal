@@ -23,6 +23,11 @@ const lessonSchema = new Schema(
       type: String,
       required: true,
     },
+    instructor: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
     content: {
       type: String,
       minlength: 200,
