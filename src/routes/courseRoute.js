@@ -21,7 +21,7 @@ const courseRoute = (router) => {
 
   // Only admins and instructors(who are the actual owner of a course) can Update and Delete a course.
   router
-    .route("/api/v1/courses/:id")
+    .route("/api/v1/courses/:courseId")
     .patch(
       authMiddleware.authenticate,
       authMiddleware.authorize({ roles: ["admin", "instructor"] }),
@@ -51,7 +51,7 @@ const courseRoute = (router) => {
 
   // Find single course for admins and instructors(who are the actual owner of a course)
   router.get(
-    "/api/v1/admin-instructor/courses/:id",
+    "/api/v1/admin-instructor/courses/:courseId",
     authMiddleware.authenticate,
     authMiddleware.authorize({ roles: ["admin", "instructor"] }),
     authMiddleware.courseOwnership({ model: "Course" }),

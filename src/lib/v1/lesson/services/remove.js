@@ -27,7 +27,7 @@ const remove = async ({ courseId, lessonId }) => {
 
     // If lesson is exist, then delete the lesson form the course
     const deleteLessonFromCourse = await courseServicesV1.update({
-      id: courseId,
+      courseId,
       pullLessonId: lessonId,
     });
 

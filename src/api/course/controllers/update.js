@@ -4,8 +4,8 @@ const { StatusCodes } = require("http-status-codes");
 const { courseServicesV1 } = require("../../../lib/v1/course");
 
 const update = asyncHandler(async (req, res) => {
-  // ID from request params
-  const id = req.params?.id;
+  // courseId from request params
+  const courseId = req.params?.courseId;
 
   // User Role
   const superUser = req.user?.role;
@@ -64,7 +64,7 @@ const update = asyncHandler(async (req, res) => {
    * @Update_Course
    */
   const course = await courseServicesV1.update({
-    id,
+    courseId,
     superUser,
     status,
     imageFilePath,

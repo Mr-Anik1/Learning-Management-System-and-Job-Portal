@@ -6,7 +6,7 @@ const courseOwnership =
   ({ model = "" }) =>
   async (req, res, next) => {
     const {
-      params: { id },
+      params: { courseId },
       user: { userId, role },
     } = req;
 
@@ -15,7 +15,7 @@ const courseOwnership =
       if (model === "Course") {
         // Check Course Ownership
         const isOwner = await courseServicesV1.checkCourseOwnership({
-          resourceId: id,
+          resourceId: courseId,
           userId,
           role,
         });

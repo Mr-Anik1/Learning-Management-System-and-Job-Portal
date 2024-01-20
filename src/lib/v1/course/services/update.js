@@ -3,7 +3,7 @@ const { errors } = require("../../../../errors");
 const { isValidObjectId } = require("../../../../utils");
 
 const update = async ({
-  id,
+  courseId,
   superUser,
   status,
   imageFilePath,
@@ -11,8 +11,8 @@ const update = async ({
   pullLessonId,
   payload = {},
 }) => {
-  // If id doesn't pass then throw BadRequestError
-  if (!id) {
+  // If courseId doesn't pass then throw BadRequestError
+  if (!courseId) {
     throw new errors.BadRequestError(`Invalid Credentials`);
   }
 
@@ -33,7 +33,7 @@ const update = async ({
      * 
      
     // Find Course
-    const singleCourse=await Course.findById(id);
+    const singleCourse=await Course.findById(courseId);
 
     // If singleCourse doesn't exist
     if(!singleCourse){
@@ -103,10 +103,14 @@ const update = async ({
 
   try {
     // Update course
-    const course = await Course.findOneAndUpdate({ _id: id }, updateQuery, {
-      new: true,
-      runValidators: true,
-    }).select("-imageId");
+    const course = await Course.findOneAndUpdate(
+      { _id: courseId },
+      updateQuery,
+      {
+        new: true,
+        runValidators: true,
+      }
+    ).select("-imageId");
 
     // If course doesn't exist
     if (!course) {

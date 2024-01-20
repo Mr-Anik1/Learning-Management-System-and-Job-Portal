@@ -64,7 +64,7 @@ const create = async ({
      * Here this newly created lesson ID will push to the lessons array in the Course.
      */
     await courseServicesV1.update({
-      id: courseId,
+      courseId,
       pushLessonId: lessonId,
     });
 

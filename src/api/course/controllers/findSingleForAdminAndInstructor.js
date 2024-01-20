@@ -3,10 +3,12 @@ const { courseServicesV1 } = require("../../../lib/v1/course");
 const { StatusCodes } = require("http-status-codes");
 
 const findSingleForAdminAndInstructor = asyncHandler(async (req, res) => {
-  const id = req.params?.id;
+  const courseId = req.params?.courseId;
 
   // Retrive Single Course
-  const course = await courseServicesV1.findSingleForAdminAndInstructor({ id });
+  const course = await courseServicesV1.findSingleForAdminAndInstructor({
+    courseId,
+  });
 
   // Generate Response
   const response = {

@@ -1,9 +1,9 @@
 const { errors } = require("../../../../errors");
 const { Course } = require("../../../../models");
 
-const remove = async ({ id }) => {
-  // If id doesn't pass then throw a BadRequestError
-  if (!id) {
+const remove = async ({ courseId }) => {
+  // If courseId doesn't pass then throw a BadRequestError
+  if (!courseId) {
     throw new errors.BadRequestError(`Invalid Credentials`);
   }
 
@@ -15,7 +15,7 @@ const remove = async ({ id }) => {
      *     NEED SOME WORK FOR CLOUDINARY
      *
      *
-     * const isExistCourse=await Course.findById(id)
+     * const isExistCourse=await Course.findById(courseId)
      * 
      * // If isExistCourse doesn't exist
        if (!isExistCourse) {
@@ -31,7 +31,7 @@ const remove = async ({ id }) => {
      */
 
     // Delete course
-    const course = await Course.findByIdAndDelete(id);
+    const course = await Course.findByIdAndDelete(courseId);
 
     // If course doesn't exist
     if (!course) {

@@ -1,15 +1,15 @@
 const { errors } = require("../../../../errors");
 const { Course } = require("../../../../models");
 
-const findSingleForAdminAndInstructor = async ({ id }) => {
+const findSingleForAdminAndInstructor = async ({ courseId }) => {
   // If id doesn't pass
-  if (!id) {
+  if (!courseId) {
     throw new errors.BadRequestError(`Invalid Credentials.`);
   }
 
   try {
     // Find a single course with id
-    const course = await Course.findById(id).select("-imageId").populate({
+    const course = await Course.findById(courseId).select("-imageId").populate({
       path: "instructor",
       select: "_id firstname lastname profilePicture email profession role",
     });
