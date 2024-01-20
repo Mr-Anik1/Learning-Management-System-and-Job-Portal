@@ -5,7 +5,7 @@ const { lessonServicesV1 } = require("../../../lib/v1/lesson");
 
 const update = asyncHandler(async (req, res) => {
   // lessonId from request params
-  const lessonId = req.params?.id;
+  const lessonId = req.params?.lessonId;
 
   // First define slug and categorySlug is undefined
   let slug = undefined;
