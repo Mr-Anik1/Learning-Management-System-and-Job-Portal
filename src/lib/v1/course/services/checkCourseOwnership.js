@@ -1,4 +1,4 @@
-const { Course } = require("../../../../models");
+const { singleCourseById } = require("./singleCourseById");
 const { errors } = require("../../../../errors");
 
 const checkCourseOwnership = async ({ resourceId, userId, role }) => {
@@ -14,7 +14,7 @@ const checkCourseOwnership = async ({ resourceId, userId, role }) => {
      * @If_user_is_not_admin
      */
     // Find course by id
-    const course = await Course.findById(resourceId);
+    const course = await singleCourseById({ courseId: resourceId });
 
     // If course is doesn't exist
     if (!course) {
@@ -32,7 +32,7 @@ const checkCourseOwnership = async ({ resourceId, userId, role }) => {
       console.log(`[CHECK_COURSE_OWNERSHIP]: ${err.message}`);
     }
 
-    throw new errors.NotFoundError(`Resource doesn't exist`);
+    throw new errors.NotFoundError(`Your requested course doesn't exist`);
   }
 };
 
