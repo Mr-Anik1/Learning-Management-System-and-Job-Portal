@@ -7,15 +7,14 @@ const update = async ({
   superUser,
   status,
   imageFilePath,
-  lessonId,
+  pushLessonId,
+  pullLessonId,
   payload = {},
 }) => {
   // If id doesn't pass then throw BadRequestError
   if (!id) {
     throw new errors.BadRequestError(`Invalid Credentials`);
   }
-
-  // check lesson(id) valid or not
 
   // Generate Update Query for course update
   const updateQuery = {};
@@ -59,19 +58,36 @@ const update = async ({
   }
 
   /**
-   * @Update_lessons
+   * @Push_lesson
    * Push individual lesson(ID) in the lessons array.
    */
-  if (lessonId) {
-    // First check lessonId is valid or not
-    const isLessonValid = isValidObjectId({
-      id: lessonId,
-      nameOfId: "LessonID",
+  if (pushLessonId) {
+    // First check pushLessonId is valid or not
+    const isValidLesson = isValidObjectId({
+      id: pushLessonId,
+      nameOfId: "PushLessonId",
     });
 
-    // If lessonId is valid, push lessonId to the lessons array
-    if (isLessonValid) {
-      updateQuery.$push = { lessons: lessonId };
+    // If pushLessonId is valid, push LessonId to the lessons array
+    if (isValidLesson) {
+      updateQuery.$push = { lessons: pushLessonId };
+    }
+  }
+
+  /**
+   * @Pull_LessonID
+   * Delete individual lessonId form the lessons array.
+   */
+  if (pullLessonId) {
+    // First check pullLessonId is valid or not
+    const isValidLesson = isValidObjectId({
+      id: pullLessonId,
+      nameOfId: "PullLessonId",
+    });
+
+    // If pullLessonId is valid, pull lessonId from the lessons array.
+    if (isValidLesson) {
+      updateQuery.$pull = { lessons: pullLessonId };
     }
   }
 
