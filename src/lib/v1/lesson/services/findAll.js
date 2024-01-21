@@ -12,15 +12,15 @@ const findAll = async ({
   search = defaults.search,
   category = defaults.category,
 }) => {
+  // If courseId doesn't pass then throw an error
+  if (!courseId) {
+    throw new errors.BadRequestError(`Invalid Credentials.`);
+  }
+
+  // First check courseId is a valid mongodb id or not
+  isValidObjectId({ id: courseId, nameOfId: "courseID" });
+
   try {
-    // If courseId doesn't pass then throw an error
-    if (!courseId) {
-      throw new errors.BadRequestError(`Invalid Credentials.`);
-    }
-
-    // First check courseId is a valid mongodb id or not
-    isValidObjectId({ id: courseId, nameOfId: "courseID" });
-
     // Create essential string for sorting
     const sortStr = `${sortType === "dsc" ? "-" : ""}${sortBy}`;
 
