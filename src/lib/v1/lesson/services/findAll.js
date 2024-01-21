@@ -3,6 +3,7 @@ const { errors } = require("../../../../errors");
 const defaults = require("../../../../config/defaults");
 
 const findAll = async ({
+  courseId,
   page = defaults.page,
   limit = defaults.limit,
   sortType = defaults.sortType,
@@ -11,6 +12,14 @@ const findAll = async ({
   category = defaults.category,
 }) => {
   try {
+    // If courseId doesn't pass then throw an error
+    if (!courseId) {
+      throw new errors.BadRequestError(`Invalid Credentials.`);
+    }
+
+    // First check courseId is a valid mongodb id or not
+    isValidObjectId({ id: courseId, nameOfId: "courseID" });
+
     // Create essential string for sorting
     const sortStr = `${sortType === "dsc" ? "-" : ""}${sortBy}`;
 
@@ -21,7 +30,8 @@ const findAll = async ({
     };
 
     // Find all lessons
-    const lessons = await Lesson.find(filter)
+    const lessons = await Lesson.where({ courseId })
+      .find(filter)
       .sort(sortStr)
       .skip(page * limit - limit)
       .limit(limit);

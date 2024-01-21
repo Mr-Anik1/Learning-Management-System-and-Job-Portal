@@ -5,6 +5,8 @@ const { StatusCodes } = require("http-status-codes");
 const defaults = require("../../../config/defaults");
 
 const findAll = asyncHandler(async (req, res) => {
+  // Path Parameters
+  const courseId = req.params?.courseId;
   // Query Parameters
   const page = +req.query?.page || defaults.page;
   const limit = +req.query?.limit || defaults.limit;
@@ -15,6 +17,7 @@ const findAll = asyncHandler(async (req, res) => {
 
   // Retrive all lessons
   const lessons = await lessonServicesV1.findAll({
+    courseId,
     page,
     limit,
     sortType,
@@ -25,6 +28,7 @@ const findAll = asyncHandler(async (req, res) => {
 
   // Pagination
   const totalLessons = await lessonServicesV1.count({
+    courseId,
     search,
     category,
   });

@@ -3,12 +3,11 @@ const { lessonServicesV1 } = require("../../../lib/v1/lesson");
 const { StatusCodes } = require("http-status-codes");
 
 const findSingle = asyncHandler(async (req, res) => {
-  const { slug, categoryType } = req.params;
+  const { lessonId } = req.params;
 
   // Retrive Single Lesson
-  const { lesson, lessonTopic } = await lessonServicesV1.findSingle({
-    slug,
-    categoryType,
+  const lesson = await lessonServicesV1.findSingle({
+    lessonId,
   });
 
   // Generate Response
@@ -16,7 +15,6 @@ const findSingle = asyncHandler(async (req, res) => {
     code: StatusCodes.OK,
     message: "Lesson Retrived Successfully",
     data: lesson,
-    simillarTopic: lessonTopic,
     links: {
       self: req.url,
     },

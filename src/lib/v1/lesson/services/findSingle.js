@@ -1,30 +1,26 @@
 const { Lesson } = require("../../../../models");
 const { errors } = require("../../../../errors");
+const { isValidObjectId } = require("../../../../utils");
 
-const findSingle = async ({ slug, categoryType }) => {
-  // If slug and categoryType doesn't pass
-  if (!slug || !categoryType) {
+const findSingle = async ({ lessonId }) => {
+  // If lessonId doesn't pass
+  if (!lessonId) {
     throw new errors.BadRequestError(`Invalid Credentials.`);
   }
 
+  // First check lessonId is a valid mongodb id or not
+  isValidObjectId({ id: lessonId, nameOfId: "LessonID" });
+
   try {
     // Find a single lesson
-    const lesson = await Lesson.findOne({
-      slug,
-      categorySlug: categoryType,
-    });
+    const lesson = await Lesson.findById(lessonId);
 
     // If lesson doesn't exist
     if (!lesson) {
       throw Error;
     }
 
-    // Find simillar lesson topic with categorySlug
-    const lessonTopic = await Lesson.find({
-      categorySlug: categoryType,
-    }).select("title slug categorySlug freePreview");
-
-    return { lesson, lessonTopic };
+    return lesson;
   } catch (err) {
     if (err.message) {
       console.log(`[FIND_SINGLE_LESSON]: ${err.message}`);
