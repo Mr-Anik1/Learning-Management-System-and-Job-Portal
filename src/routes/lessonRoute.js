@@ -2,8 +2,7 @@ const { lessonControllers } = require("../api/lesson");
 const { authMiddleware } = require("../middlewares");
 
 const lessonRoute = (router) => {
-  // 1.Only admins and instructors(who are the actual owner of the course) can create a new lesson and add it to the course.
-  // 2.Anyone can find all course-lessons with courseId.
+  // Only admins and instructors(who are the actual owner of the course) can create a new lesson and add it to the course.
   router
     .route("/api/v1/lessons/:courseId")
     .post(
@@ -11,8 +10,10 @@ const lessonRoute = (router) => {
       authMiddleware.authorize({ roles: ["admin", "instructor"] }),
       authMiddleware.courseOwnership({ model: "Course" }),
       lessonControllers.create
-    )
-    .get(lessonControllers.findAll);
+    );
+
+  // Anyone can find all course-lessons with courseId.
+  router.get("/api/v1/course-lessons/:courseId", lessonControllers.findAll);
 
   // 1.Anyone can find a single lesson with lessonId.
   // 2.Only admins and instructors(who are the actual owner of a lesson) can Update the lesson.
