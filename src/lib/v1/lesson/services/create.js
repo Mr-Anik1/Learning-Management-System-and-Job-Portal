@@ -26,8 +26,9 @@ const create = async ({
   // Check courseId is a valid mongodb ID or not.
   isValidObjectId({ id: courseId, nameOfId: "CourseID" });
 
-  // Generate createQuery object for create a new lesson
+  // Generate createQuery object for create a new lesson.
   const createQuery = {
+    courseId,
     title,
     slug,
     category,
