@@ -1,6 +1,7 @@
 const { Lesson } = require("../../../../models");
 const { errors } = require("../../../../errors");
 const defaults = require("../../../../config/defaults");
+const { isValidObjectId } = require("../../../../utils");
 
 const findAll = async ({
   courseId,
