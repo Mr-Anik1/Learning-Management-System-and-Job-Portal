@@ -17,6 +17,7 @@ const { blogCategoryRoute } = require("./blogCategoryRoute");
 const { courseRoute } = require("./courseRoute");
 const { courseCategoryRoute } = require("./courseCategoryRoute");
 const { lessonRoute } = require("./lessonRoute");
+const { workWithUsRouter } = require("./workWithUsRoute");
 
 const appRouter = () => {
   // Health Check
@@ -72,6 +73,9 @@ const appRouter = () => {
 
   // Lesson
   lessonRoute(router);
+
+  // Work With Us Form
+  workWithUsRouter(router);
 
   return router;
 };

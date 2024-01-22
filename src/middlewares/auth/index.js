@@ -5,6 +5,7 @@ const { userOwnership } = require("./userOwnership");
 const { reviewOwnership } = require("./reviewOwnership");
 const { courseOwnership } = require("./courseOwnership");
 const { lessonOwnership } = require("./lessonOwnership");
+const { workWithUsOwnership } = require("./workWithUsOwnership");
 
 // All authentication and authorization middleware have been exported
 module.exports = {
@@ -14,4 +15,5 @@ module.exports = {
   reviewOwnership,
   courseOwnership,
   lessonOwnership,
+  workWithUsOwnership,
 };

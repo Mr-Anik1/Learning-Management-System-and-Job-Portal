@@ -2,6 +2,11 @@ const { Schema, model } = require("mongoose");
 
 const workWithUsSchema = new Schema(
   {
+    applicantId: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
     name: {
       type: String,
       required: [true, "Please provide a name"],
@@ -28,14 +33,16 @@ const workWithUsSchema = new Schema(
       type: String,
       required: true,
       enum: [
-        "Developer",
-        "Designer",
-        "Engineer",
-        "Manager",
-        "Analyst",
-        "Scientist",
-        "Other",
+        "DEVELOPER",
+        "DESIGNER",
+        "ENGINEER",
+        "MANAGER",
+        "ANALYST",
+        "SCIENTIST",
+        "OTHER",
       ],
+      uppercase: true,
+      trim: true,
     },
     specialization: {
       type: [String],
