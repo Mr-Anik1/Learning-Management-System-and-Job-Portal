@@ -3,6 +3,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const { errorMiddleware } = require("../middlewares");
 const { appRouter } = require("../routes");
+const { rateLimiter } = require("../utils");
 
 // Create App
 const app = express();
@@ -13,6 +14,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
+// Rate Limit
+app.use(rateLimiter({ time: 2, maxReq: 15 }));
 // Router
 app.use(appRouter());
 // Error Handler
