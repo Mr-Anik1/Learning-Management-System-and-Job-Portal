@@ -11,10 +11,7 @@ const rateLimiter = ({ time = 15, maxReq = 100, message }) => {
       code: StatusCodes.TOO_MANY_REQUESTS,
       status: false,
       message:
-        message ||
-        `Too many requests, please try again after ${
-          time ? time : 15
-        } minutes.`,
+        message || `Too many requests, please try again after ${time} minutes.`,
     },
   });
 
