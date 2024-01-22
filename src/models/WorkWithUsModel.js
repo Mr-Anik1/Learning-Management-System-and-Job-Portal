@@ -27,6 +27,19 @@ const workWithUsSchema = new Schema(
     profession: {
       type: String,
       required: true,
+      enum: [
+        "Developer",
+        "Designer",
+        "Engineer",
+        "Manager",
+        "Analyst",
+        "Scientist",
+        "Other",
+      ],
+    },
+    specialization: {
+      type: [String],
+      required: true,
     },
     currentJob: {
       type: String,
@@ -35,6 +48,29 @@ const workWithUsSchema = new Schema(
     resume: {
       type: String,
       required: true,
+    },
+    status: {
+      type: String,
+      enum: {
+        values: ["SUMBITTED", "CHECKED", "APPROVED", "REJECTED"],
+        message: "{VALUE} is not supported",
+      },
+      default: "SUMBITTED",
+      uppercase: true,
+      trim: true,
+      index: true,
+    },
+    portfolio: {
+      type: String,
+    },
+    coverLetter: {
+      type: String,
+    },
+    linkedinProfile: {
+      type: String,
+    },
+    expectedSalary: {
+      type: Number,
     },
   },
   { timestamps: true, id: true }
