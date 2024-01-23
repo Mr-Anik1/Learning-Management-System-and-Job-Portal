@@ -8,6 +8,7 @@ const config = {
   status: "",
   category: "",
   paid: "",
+  author: "",
   totalItems: 0,
   // JWT
   secret: process.env.ACCESS_TOKEN_SECRET,
