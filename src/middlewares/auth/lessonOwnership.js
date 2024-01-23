@@ -1,7 +1,7 @@
 const { lessonServicesV1 } = require("../../lib/v1/lesson");
 const { errors } = require("../../errors");
 
-// Course ownership function is returns another functin that is a middleware
+// Lesson ownership function is returns another functin that is a middleware
 const lessonOwnership =
   ({ model = "" }) =>
   async (req, res, next) => {
