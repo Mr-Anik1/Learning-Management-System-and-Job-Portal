@@ -15,6 +15,7 @@ const { Course } = require("./CourseModel");
 const { CourseCategory } = require("./CourseCategoryModel");
 const { Lesson } = require("./LessonModel");
 const { WorkWithUs } = require("./WorkWithUsModel");
+const { ProjectCategory } = require("./ProjectCategoryModel");
 
 // All models have been exported
 module.exports = {
@@ -34,4 +35,5 @@ module.exports = {
   CourseCategory,
   Lesson,
   WorkWithUs,
+  ProjectCategory,
 };

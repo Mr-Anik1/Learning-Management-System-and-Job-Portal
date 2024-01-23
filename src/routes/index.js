@@ -1,4 +1,5 @@
 const router = require("express").Router();
+
 const { healthRoute } = require("./healthRoute");
 const { authRoute } = require("./authRoute");
 const { userRoute } = require("./userRoute");
@@ -18,6 +19,7 @@ const { courseRoute } = require("./courseRoute");
 const { courseCategoryRoute } = require("./courseCategoryRoute");
 const { lessonRoute } = require("./lessonRoute");
 const { workWithUsRouter } = require("./workWithUsRoute");
+const { projectCategoryRoute } = require("./projectCategory");
 
 const appRouter = () => {
   // Health Check
@@ -76,6 +78,9 @@ const appRouter = () => {
 
   // Work With Us Form
   workWithUsRouter(router);
+
+  // Project Category
+  projectCategoryRoute(router);
 
   return router;
 };
