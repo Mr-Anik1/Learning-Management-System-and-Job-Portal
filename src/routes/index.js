@@ -21,6 +21,7 @@ const { lessonRoute } = require("./lessonRoute");
 const { workWithUsRouter } = require("./workWithUsRoute");
 const { projectCategoryRoute } = require("./projectCategory");
 const { projectRoute } = require("./projectRoute");
+const { bookSessionRoute } = require("./bookSessionRoute");
 
 const appRouter = () => {
   // Health Check
@@ -85,6 +86,9 @@ const appRouter = () => {
 
   // Project
   projectRoute(router);
+
+  // Book a session
+  bookSessionRoute(router);
 
   return router;
 };
