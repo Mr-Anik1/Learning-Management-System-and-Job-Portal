@@ -20,6 +20,7 @@ const { courseCategoryRoute } = require("./courseCategoryRoute");
 const { lessonRoute } = require("./lessonRoute");
 const { workWithUsRouter } = require("./workWithUsRoute");
 const { projectCategoryRoute } = require("./projectCategory");
+const { projectRoute } = require("./projectRoute");
 
 const appRouter = () => {
   // Health Check
@@ -81,6 +82,9 @@ const appRouter = () => {
 
   // Project Category
   projectCategoryRoute(router);
+
+  // Project
+  projectRoute(router);
 
   return router;
 };
