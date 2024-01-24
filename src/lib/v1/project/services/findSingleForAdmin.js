@@ -13,7 +13,7 @@ const findSingleForAdmin = async ({ projectId }) => {
 
   try {
     // Find a single project with its ID
-    const project = await Project.findById(projectId);
+    const project = await Project.findById(projectId).select("-imagesId");
 
     // If project doesn't exist
     if (!project) {

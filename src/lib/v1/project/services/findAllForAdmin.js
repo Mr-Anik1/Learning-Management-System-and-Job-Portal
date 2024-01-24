@@ -28,7 +28,8 @@ const findAllForAdmin = async ({
     const projects = await Project.find(filter)
       .sort(sortStr)
       .skip(page * limit - limit)
-      .limit(limit);
+      .limit(limit)
+      .select("-imagesId");
 
     // If the array of projects doesn't exist or is empty
     if (!projects || projects.length === 0) {

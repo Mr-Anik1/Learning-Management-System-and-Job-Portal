@@ -18,7 +18,7 @@ const findSingle = async ({ slug, categoryType }) => {
       slug,
       categorySlug: categoryType,
       status: "APPROVED",
-    });
+    }).select("-imagesId");
 
     // If project doesn't exist
     if (!project) {

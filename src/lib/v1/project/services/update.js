@@ -52,7 +52,7 @@ const update = async ({ projectId, superUser, status, payload = {} }) => {
         new: true,
         runValidators: true,
       }
-    );
+    ).select("-imagesId");
 
     // If project doesn't exist
     if (!project) {
