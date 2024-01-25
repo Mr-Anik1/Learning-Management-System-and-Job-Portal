@@ -18,6 +18,7 @@ const { WorkWithUs } = require("./WorkWithUsModel");
 const { Project } = require("./projectModel");
 const { ProjectCategory } = require("./ProjectCategoryModel");
 const { BookSession } = require("./BookSessionModel");
+const qnaModels = require("./qna");
 
 // All models have been exported
 module.exports = {
@@ -40,4 +41,5 @@ module.exports = {
   Project,
   ProjectCategory,
   BookSession,
+  qnaModels,
 };
